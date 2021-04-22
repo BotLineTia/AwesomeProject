@@ -1,8 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import Screen from '../../components/Screen/Screen';
-import AppButton from '../../components/AppButton/AppButton';
 import HeaderScreen from '../../components/HeaderScreen/HeaderScreen';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,7 +16,8 @@ function HomeScreen({navigation}) {
             <MaterialCommunityIcons name="plus" color="white" size={30} />
           </TouchableOpacity>
         )}/>
-      <Text style={styles.text}>Home Screen</Text>
+      <Text style={styles.text}>Click + to open HomeDetail </Text>
+      <Text style={styles.text}>Click Setting to Logout</Text>
     </Screen>
   );
 }
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     flex: 1
   },
   text : {
-    margin : 100,
-    fontSize : 30
+    margin : 50,
+    fontSize : 26
   }
 });
 

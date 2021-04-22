@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { NavigationContainer } from '@react-navigation/native';
 
@@ -8,11 +8,11 @@ import AppNavigator from './AppNavigator';
 
 const RootNavigator = () => {
   const isAuth = useSelector(state => {
-    console.log('state.Login.token : ' + state.Login.token);
-    return state.Login.token !== null ? true : false; 
+    //console.log('state.Login.authen : ' + state.Login.authen);
+    return state.Login.authen;
   });
 
-  console.log('is Auth : '+isAuth);
+  //console.log('is Auth : '+isAuth);
   return (
     ( !isAuth ? 
       <NavigationContainer>

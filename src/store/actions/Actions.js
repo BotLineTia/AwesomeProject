@@ -1,10 +1,10 @@
 import * as actionTypes from './actionTypes';
 
-export const LoginRequested = (email,password) => {
+export const LoginRequested = (username,password) => {
   return {
     type: actionTypes.LOG_IN_REQUEST,
     data: {
-      email,
+      username,
       password,
     },
   };
@@ -21,5 +21,12 @@ export const LoginFailed = (data) => {
   return {
     type: actionTypes.LOG_IN_FAILURE,
     data,
+  };
+};
+
+export const Logout = (data) => {
+  return {
+    type: actionTypes.LOG_OUT,
+    data
   };
 };

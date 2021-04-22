@@ -2,16 +2,14 @@ import React from 'react';
 import { View , Text , TouchableOpacity } from 'react-native';
 
 import Screen from '../../components/Screen/Screen';
-import AppButton from '../../components/AppButton/AppButton';
 import HeaderScreen from '../../components/HeaderScreen/HeaderScreen'
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Colors from '../../constants/Colors';
 import styles from './SettingScreen.Style';
 
 import { useDispatch } from 'react-redux';
 
-import { Logout } from '../../store/actions/logoutAction';
+import { Logout } from '../../store/actions/Actions';
 
 function SettingScreen(props) {
 
@@ -26,7 +24,7 @@ function SettingScreen(props) {
     <Screen>
       <HeaderScreen 
         renderLeftBtn={() => (
-          <TouchableOpacity onPress={() => navigation.navigate('home')}>
+          <TouchableOpacity onPress={() => {}}>
             <MaterialCommunityIcons name="keyboard-backspace" color="white" size={30} />
           </TouchableOpacity>
         )}/>

@@ -1,9 +1,7 @@
 import {combineReducers} from 'redux';
 
-import {loginReducer} from './loginReducer';
-import {logoutReducer} from './logoutReducer';
+import {loginReducer} from './Reducer';
 
 export default combineReducers({
-  Login: loginReducer,
-  Logout: logoutReducer
+  Login: loginReducer
 });

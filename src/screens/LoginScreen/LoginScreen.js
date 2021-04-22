@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {View, Text , ActivityIndicator } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector } from 'react-redux';
 
 import Screen from '../../components/Screen/Screen';
 import {AppForm, AppFormField, SubmitBtn} from '../../components/Forms';
@@ -11,22 +11,26 @@ import styles from './LoginScreen.Style'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import * as Yup from 'yup';
-import { LoginRequested } from '../../store/actions/loginActions';
+import { LoginRequested } from '../../store/actions/Actions';
 
 const validateSchema = Yup.object().shape({
-    email: Yup.string().email().required().label('Email'),
+    username: Yup.string().min(6).required().label('Username'),
     password: Yup.string().min(4).required().label('Password'),
   }); 
 
 function LoginScreen(props) {
 
     const dispatch = useDispatch();
-    
-    const loginHandler =({email, password}) => {
+    const loginHandler =({username, password}) => {
         dispatch(
-            LoginRequested(email,password)
+            LoginRequested(username,password)
           );
       };
+
+    const isLoading = useSelector(state => {
+        //console.log('state.Login.isLoading ' + state.Login.isLoading);
+        return state.Login.isLoading;
+    });
 
     return(
         <Screen style={styles.container}>
@@ -34,12 +38,12 @@ function LoginScreen(props) {
             <Text style={styles.title}>SIGN IN HERE</Text>
 
             <AppForm
-                initialValues={{email: '', password: ''}}
+                initialValues={{username: '', password: ''}}
                 onSubmit={loginHandler}
                 validationSchema={validateSchema}>
                 <AppFormField
-                    name="email"
-                    placeholder="Email"
+                    name="username"
+                    placeholder="Username"
                     icon="account"
                     autoCapitalize="none"
                     autoCorrect={false}
@@ -55,7 +59,12 @@ function LoginScreen(props) {
                     secureTextEntry
                     textContentType="password"
                     width="75%"></AppFormField>
+                {isLoading ? 
+                (
+                <ActivityIndicator size="large" color={'black'} />
+                ) : (
                 <SubmitBtn title="Sign in" color={'black'} width="75%" />
+                )}    
             </AppForm>
 
         <View style={styles.registerContainer}>
